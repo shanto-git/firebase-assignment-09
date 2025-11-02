@@ -1,0 +1,98 @@
+[
+  {
+    "skillId": 1,
+    "skillName": "Beginner Guitar Lessons",
+    "providerName": "Alex Martin",
+    "providerEmail": "alex@skillswap.com",
+    "price": 20,
+    "rating": 4.8,
+    "slotsAvailable": 3,
+    "description": "This beginner-friendly guitar course is designed for anyone who wants to learn to play the acoustic guitar from scratch. You’ll start with the basics such as tuning, holding the instrument properly, and learning your first simple chords. As you progress, you’ll move into strumming patterns, rhythm exercises, and easy songs to build confidence. The course emphasizes hands-on practice, personalized feedback, and fun, motivating exercises. Whether you’ve never picked up a guitar or have tried before without success, this course provides the structure and encouragement you need to make real progress in just a few weeks.",
+    "image": "https://i.postimg.cc/example1.png",
+    "category": "Music"
+  },
+  {
+    "skillId": 2,
+    "skillName": "Yoga for Stress Relief",
+    "providerName": "Sophia Patel",
+    "providerEmail": "sophia@skillswap.com",
+    "price": 15,
+    "rating": 4.9,
+    "slotsAvailable": 5,
+    "description": "This yoga program focuses on restoring calm and balance through gentle, mindful movements. You will learn deep-breathing techniques, stretching postures, and meditation practices that target stress reduction and emotional well-being. The sessions are tailored for beginners and those dealing with anxiety, burnout, or physical tension from daily routines. Each class combines traditional Hatha yoga poses with guided relaxation and mindfulness, helping participants reconnect their body and mind. Over several sessions, you’ll notice improved flexibility, better sleep quality, and enhanced focus. All you need is a yoga mat and an open mind to begin your journey toward inner peace.",
+    "image": "https://i.postimg.cc/example2.png",
+    "category": "Health & Wellness"
+  },
+  {
+    "skillId": 3,
+    "skillName": "Spoken English Improvement",
+    "providerName": "Rahul Sen",
+    "providerEmail": "rahul@skillswap.com",
+    "price": 25,
+    "rating": 4.6,
+    "slotsAvailable": 2,
+    "description": "This comprehensive spoken English course is perfect for anyone looking to boost their confidence in everyday communication. You’ll work on pronunciation, fluency, and vocabulary through practical conversation exercises and interactive dialogues. The instructor uses real-life scenarios such as workplace discussions, interviews, and travel conversations to help you express yourself naturally. The sessions emphasize speaking and listening rather than rote grammar, allowing you to think in English instead of translating from your native language. With consistent feedback and personalized practice, you’ll overcome hesitation, improve accent clarity, and sound more professional in personal and business settings.",
+    "image": "https://i.postimg.cc/example3.png",
+    "category": "Language"
+  },
+  {
+    "skillId": 4,
+    "skillName": "Basic Web Development",
+    "providerName": "Liam Wong",
+    "providerEmail": "liam@skillswap.com",
+    "price": 40,
+    "rating": 4.7,
+    "slotsAvailable": 4,
+    "description": "This hands-on web development course introduces you to the fundamental technologies that power modern websites. You’ll start by learning how to create web pages with HTML, style them beautifully with CSS, and make them interactive using JavaScript. As the course progresses, you’ll understand how web browsers interpret code, how to structure layouts, and how to publish your site online. The instructor provides project-based lessons, including building a personal portfolio website from scratch. By the end of the course, you’ll not only understand the technical basics but also gain the confidence to continue your learning into frameworks like React or Bootstrap.",
+    "image": "https://i.postimg.cc/example4.png",
+    "category": "Technology"
+  },
+  {
+    "skillId": 5,
+    "skillName": "Photography Fundamentals",
+    "providerName": "Nora Ahmed",
+    "providerEmail": "nora@skillswap.com",
+    "price": 30,
+    "rating": 4.9,
+    "slotsAvailable": 3,
+    "description": "Learn the art of photography through this detailed and beginner-friendly course. You’ll explore camera settings, exposure, aperture, shutter speed, and ISO to take full control of your camera. The instructor emphasizes composition techniques such as framing, leading lines, and rule of thirds to help you create visually striking photos. Whether you’re using a DSLR, mirrorless, or even a smartphone, the principles covered here will elevate your photography. You’ll also learn about lighting, portrait techniques, and basic photo editing using free tools. By the end, you’ll have the confidence to capture moments creatively and share professional-quality images online.",
+    "image": "https://i.postimg.cc/example5.png",
+    "category": "Art & Design"
+  },
+  {
+    "skillId": 6,
+    "skillName": "Cooking Healthy Meals",
+    "providerName": "Carlos Rivera",
+    "providerEmail": "carlos@skillswap.com",
+    "price": 18,
+    "rating": 4.5,
+    "slotsAvailable": 6,
+    "description": "Discover how to make healthy eating simple, tasty, and affordable with this interactive cooking course. You’ll learn how to prepare balanced meals that are rich in nutrients but low in unhealthy fats and sugars. The instructor focuses on fresh ingredients and practical recipes that can be made quickly even with a busy schedule. You’ll also gain tips on portion control, meal planning, and food storage. Each session includes live demonstrations and opportunities to cook along. By the end, you’ll be able to confidently cook delicious dishes that support better energy, digestion, and overall wellness without sacrificing flavor.",
+    "image": "https://i.postimg.cc/example6.png",
+    "category": "Cooking"
+  },
+  {
+    "skillId": 7,
+    "skillName": "Digital Marketing Basics",
+    "providerName": "Emma Johnson",
+    "providerEmail": "emma@skillswap.com",
+    "price": 35,
+    "rating": 4.8,
+    "slotsAvailable": 2,
+    "description": "This digital marketing course provides a strong foundation for understanding how brands grow and attract customers online. You’ll explore the key pillars of marketing — including SEO, social media strategy, email campaigns, and content creation. The instructor uses real-world examples and free tools like Google Analytics and Canva to make concepts easy to apply. You’ll learn how to identify target audiences, analyze metrics, and design marketing campaigns that convert. The course also covers ethical marketing practices and brand storytelling. By completing the lessons, you’ll have the practical skills to promote your business or freelance effectively in the digital world.",
+    "image": "https://i.postimg.cc/example7.png",
+    "category": "Business"
+  },
+  {
+    "skillId": 8,
+    "skillName": "Creative Writing Workshop",
+    "providerName": "David Lee",
+    "providerEmail": "david@skillswap.com",
+    "price": 22,
+    "rating": 4.7,
+    "slotsAvailable": 5,
+    "description": "Unleash your imagination with this in-depth creative writing workshop. Whether you’re interested in short stories, poetry, or novels, this course helps you refine your writing craft. You’ll learn about character development, plot structure, dialogue writing, and narrative style. The instructor provides writing prompts and personalized feedback on your drafts, encouraging you to find your unique voice. Discussions on famous literary works will deepen your understanding of storytelling techniques. By the end of the course, you’ll have a portfolio of your own work and the confidence to publish or continue writing independently. Perfect for both beginners and aspiring authors.",
+    "image": "https://i.postimg.cc/example8.png",
+    "category": "Writing"
+  }
+]
