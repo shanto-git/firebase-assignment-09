@@ -1,59 +1,84 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-const Card = () => {
+const CardCarousel = () => {
   const [skills, setSkills] = useState([]);
+  const [index, setIndex] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/skills.json")
       .then((res) => res.json())
       .then((data) => {
-        // Sort descending by rating
-        const sortedSkills = data.sort((a, b) => b.rating - a.rating);
-        setSkills(sortedSkills);
-      })
-      .catch((err) => console.error("Error loading data:", err));
+        const sorted = data.sort((a, b) => b.rating - a.rating);
+        setSkills(sorted.slice(0, 3));
+      });
   }, []);
 
-  const displaySkills =skills.slice(0, 3);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % 3);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const positions = [
+    { scale: 1, zIndex: 3, x: 0, opacity: 1 },      // front
+    { scale: 0.5, zIndex: 2, x: 200, opacity: 0.1 }, // left/back
+    { scale: 0.5, zIndex: 1, x: -200, opacity: 0.1 },  // right/back
+  ];
+
+  const getPosition = (i) => {
+    const posIndex = (i - index + 3) % 3;
+    return positions[posIndex];
+  };
 
   return (
-    <div className=" bg-gray-50 p-6">
-      <h1 className="text-3xl font-bold text-center mb-8 text-blue-950 border-b-2">
+    <div className="flex flex-col items-center py-10 bg-gray-50">
+      <h1 className="text-3xl font-bold text-blue-950 mb-8 border-b-2 pb-2">
         Popular Skills
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mx-7">
-        {displaySkills.map((skill) => {
-            const {skillId, skillName, rating, price, image}=skill;
-            return  (
-          <div
-            key={skillId}
-            className="bg-white shadow-md rounded-2xl transition-transform hover:scale-105 hover:shadow-lg"
-          >
-            <img
-              src={image}
-              alt={skillName}
-              className="w-full h-48 object-cover p-2 rounded-t-2xl"
-            />
-            <div className="p-4 flex flex-col justify-between">
-              <h2 className="text-xl font-bold text-gray-800 mb-2">
-                {skillName}
-              </h2>
-              <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
-                <span>⭐{rating}</span>
-                <span className="font-bold">${price}</span>
+
+      <div className="relative w-full flex justify-center h-96 overflow-hidden">
+        {skills.map((skill, i) => {
+          const { skillName, rating, price, image } = skill;
+          const { scale, zIndex, x, opacity } = getPosition(i);
+
+          return (
+            <motion.div
+              key={i}
+              animate={{ scale, x, opacity }}
+              transition={{ duration: 1.8, ease: "easeInOut" }}
+              style={{ zIndex }}
+              className="absolute w-92 bg-white shadow-lg rounded-2xl overflow-hidden"
+            >
+              <img
+                src={image}
+                alt={skillName}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4 text-center">
+                <h2 className="text-2xl font-bold mb-2">
+                  {skillName}
+                </h2>
+                <div className="flex items-center justify-between gap-2 mb-2 text-gray-600">
+                  <p className="flex items-center font-bold">
+                  <FaStar className="text-yellow-500" /> {rating}
+                  </p>
+                <p className="text-blue-600 font-bold">${price}</p>
+                </div>
+                <button className="mt-3 btn btn-secondary rounded-3xl w-full">
+                  View Details
+                </button>
               </div>
-              <button to="/allSkill" className="btn btn-secondary rounded-3xl">
-                View Details
-              </button>
-            </div>
-          </div>
-        )
+            </motion.div>
+          );
         })}
       </div>
-        <div className="flex justify-center mt-8">
-          <button onClick={()=>navigate("/allSkill")}
+      <div className="flex justify-center mt-8">
+          <button onClick={()=>navigate("/skillType")}
             className="btn btn-secondary">
             View All
           </button>
@@ -62,4 +87,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default CardCarousel;

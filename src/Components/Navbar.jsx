@@ -23,7 +23,12 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn flex items-center"><CgProfile/>My Profile</a>
+    <div className="tooltip tooltip-bottom">
+  <div className="tooltip-content ">
+    <div className="animate-bounce text-white text-xl font-semibold">My profile</div>
+  </div>
+  <button className="btn"><CgProfile/>Profile</button>
+</div>
   </div>
 </div>
         </div>
