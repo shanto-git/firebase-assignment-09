@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { motion, useAnimation } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const AllSkills = () => {
   const [skills, setSkills] = useState([]);
   const [error, setError] = useState(null);
-  const controls = useAnimation();
+  const controls = useAnimation(true);
 
   useEffect(() => {
     setError(null);
@@ -31,26 +32,18 @@ const AllSkills = () => {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: {
-        delayChildren: 0.2,
-        staggerChildren: 0.25,
-      },
+      transition: { staggerChildren: 0.3 },
     },
   };
 
   const card = {
-    hidden: { opacity: 0, y: 50, scale: 0.95 },
-    show: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
+    hidden: { opacity: 0, y: 50 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   return (
-    <div className="bg-gray-50 rounded-3xl min-h-screen">
-      <h1 className="text-3xl font-bold text-center mb-8 text-blue-950 border-b-2 border-gray-300 pb-2">
+    <div className="bg-base-300 p-6 text-center rounded-3xl min-h-screen">
+      <h1 className="text-3xl font-bold mb-8 text-blue-950 border-b-4 inline-block border-gray-400 pb-2">
        All Skills
       </h1>
 
@@ -63,7 +56,7 @@ const AllSkills = () => {
           variants={container}
           initial="hidden"
           animate={controls}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mx-7"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
         >
           {skills.map(({ skillId, skillName, rating, price, image }) => (
             <motion.div
@@ -88,9 +81,9 @@ const AllSkills = () => {
                   </span>
                   <span className="font-bold text-blue-600">${price}</span>
                 </div>
-                <button className="btn btn-secondary rounded-3xl">
+                <Link to={`/skillType/${skillId}`} className="btn btn-secondary rounded-3xl">
                   View Details
-                </button>
+                </Link>
               </div>
             </motion.div>
           ))}

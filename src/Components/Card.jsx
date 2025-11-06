@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const CardCarousel = () => {
+const Card = () => {
   const [skills, setSkills] = useState([]);
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const CardCarousel = () => {
     fetch("/skills.json")
       .then((res) => res.json())
       .then((data) => {
-        const sorted = data.sort((a, b) => b.rating - a.rating);
+        const sorted = data.sort((a, b) => a.slotsAvailable - b.slotsAvailable);
         setSkills(sorted.slice(0, 3));
       });
   }, []);
@@ -25,9 +25,9 @@ const CardCarousel = () => {
   }, []);
 
   const positions = [
-    { scale: 1, zIndex: 3, x: 0, opacity: 1 },      // front
-    { scale: 0.5, zIndex: 2, x: 200, opacity: 0.1 }, // left/back
-    { scale: 0.5, zIndex: 1, x: -200, opacity: 0.1 },  // right/back
+    { scale: 1, zIndex: 3, x: 0, opacity: 1 },
+    { scale: 0.5, zIndex: 2, x: 200, opacity: 0.1 },
+    { scale: 0.5, zIndex: 1, x: -200, opacity: 0.1 },
   ];
 
   const getPosition = (i) => {
@@ -43,7 +43,7 @@ const CardCarousel = () => {
 
       <div className="relative w-full flex justify-center h-96 overflow-hidden">
         {skills.map((skill, i) => {
-          const { skillName, rating, price, image } = skill;
+          const {skillId, skillName, rating, price, image } = skill;
           const { scale, zIndex, x, opacity } = getPosition(i);
 
           return (
@@ -69,9 +69,9 @@ const CardCarousel = () => {
                   </p>
                 <p className="text-blue-600 font-bold">${price}</p>
                 </div>
-                <button className="mt-3 btn btn-secondary rounded-3xl w-full">
+                <Link to={`/skillType/${skillId}`} className="mt-3 btn btn-secondary rounded-3xl w-full">
                   View Details
-                </button>
+                </Link>
               </div>
             </motion.div>
           );
@@ -87,4 +87,4 @@ const CardCarousel = () => {
   );
 };
 
-export default CardCarousel;
+export default Card;

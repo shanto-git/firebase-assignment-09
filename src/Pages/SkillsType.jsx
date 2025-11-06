@@ -1,5 +1,7 @@
 import React from "react";
 import AllSkills from "../Components/AllSkills";
+import TopRated from "../Components/TopRated";
+import HowItWorks from "../Components/HowItWorks";
 
 const SkillsType = () => {
   return (
@@ -24,7 +26,7 @@ const SkillsType = () => {
           aria-label="Top Rated Providers"
         />
         <div className="tab-content bg-base-100 border-base-300 p-6">
-          Tab content 2
+          <TopRated></TopRated>
         </div>
 
         <input
@@ -34,7 +36,7 @@ const SkillsType = () => {
           aria-label="How It Works"
         />
         <div className="tab-content bg-base-100 border-base-300 p-6">
-          Tab content 3
+          <HowItWorks></HowItWorks>
         </div>
       </div>
     </div>
