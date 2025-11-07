@@ -68,9 +68,9 @@ const Navbar = () => {
                   className="drawer-overlay"
                 ></label>
                 <div className="menu bg-base-200 min-h-full w-80 p-4">
-                  <div className="flex flex-col items-center gap-1"><img src="/src/assets/logo-removebg-preview.png" alt="" className="w-18 rounded-full border-1"/>
-                  <h1>User Name</h1>
-                  <p>User Email</p>
+                  <div className="flex flex-col items-center gap-1"><img src={user.photo} alt="" className="w-18 rounded-full border-1"/>
+                  <h1>{user.name}</h1>
+                  <p>{user.email}</p>
                   <button className="btn btn-secondary">Update Profile</button>
                   </div>
                 </div>
