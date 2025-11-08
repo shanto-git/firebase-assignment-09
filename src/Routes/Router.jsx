@@ -8,6 +8,8 @@ import Login from "../Pages/Login";
 import AuthLayout from "../Layouts/AuthLayout";
 import Register from "../Pages/Register";
 import Success from "../Pages/Success";
+import PrivateRoute from "../Provider/PrivateRoute";
+import MultiLogin from "../Components/MultiLogin";
 
 
 const router = createBrowserRouter([
@@ -21,11 +23,19 @@ const router = createBrowserRouter([
       },
       {
         path:"/success",
-        Component:Success,
+        element:(
+          <PrivateRoute>
+            <Success></Success>
+          </PrivateRoute>
+        )
       },
       {
         path: "/skillType",
-        Component: SkillsType,
+        element:(
+          <PrivateRoute>
+            <SkillsType></SkillsType>
+          </PrivateRoute>
+        ),
       },
       {
         path:"/skillType/:id",
@@ -37,6 +47,10 @@ const router = createBrowserRouter([
     path:"/auth",
     Component: AuthLayout,
     children:[
+      {
+        path:"multiLogin",
+        Component: MultiLogin,
+      },
       {
         path:"login",
         Component: Login,

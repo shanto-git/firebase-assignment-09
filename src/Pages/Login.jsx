@@ -1,23 +1,41 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
+  const {signIn}=use(AuthContext);
+  const handleLogin=(e)=>{
+    e.preventDefault();
+    const form = e.target;
+    const email= form.email.value;
+    const password= form.password.value;
+    signIn(email, password).then(result=>{
+      const user =result.user;
+      console.log(user)
+    }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert(errorCode, errorMessage);
+  });
+  };
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content w-96">
         <div className="card bg-base-100 w-full max-w-2xl shrink-0 shadow-2xl">
-          <div className="card-body">
+          <form onSubmit={handleLogin} className="card-body">
             <h1 className="text-2xl text-center font-bold">Login With Email</h1>
             <fieldset className="fieldset">
               <label className="label">Email</label>
-              <input
+              <input 
+                name="email"
                 type="email"
                 className="input"
                 placeholder="Email"
                 required
               />
               <label className="label">Password</label>
-              <input
+              <input 
+                name="password"
                 type="password"
                 className="input"
                 placeholder="Password"
@@ -26,7 +44,7 @@ const Login = () => {
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>
-              <button className="btn btn-neutral mt-4">Login</button>
+              <button type="submit" className="btn btn-neutral mt-4">Login</button>
               <p className="text-center">
                 Don't have an account? Please{" "}
                 <Link
@@ -37,7 +55,7 @@ const Login = () => {
                 </Link>
               </p>
             </fieldset>
-          </div>
+          </form>
         </div>
       </div>
     </div>
