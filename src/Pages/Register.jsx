@@ -1,10 +1,11 @@
-import React, { use } from "react";
+import React, { use, useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Register = () => {
-    const {createUser, setUser, updateUser}= use(AuthContext);
+    const {createUser, setUser, updateUser}= useContext(AuthContext);
     const navigate=useNavigate();
+    const location=useLocation();
   const handleRegister = (e) => {
     e.preventDefault();
     console.log(e.target);
@@ -13,18 +14,17 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    createUser(email, password, name, photo)
+    createUser(email, password)
     .then(result=>{
         const user = result.user;
-        updateUser({displayName: name, photURL: photo})
+        updateUser({displayName: name, photoURL: photo})
         .then(()=>{
           setUser({...user, displayName: name, photoURL: photo });
-          navigate(`${location.state?.from?.pathname || "/"}`)
+          navigate(location.state?.from?.pathname || "/")
         })
         .catch((error) => {
           console.log(error)
           setUser(user);
-  // ...
 });
     })
     .catch(error=>{

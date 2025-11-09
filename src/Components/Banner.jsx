@@ -10,7 +10,7 @@ const Banner = () => {
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img
             src={heroIcon}
-            className="max-w-2xl"
+            className="w-full max-w-[500px] md:max-w-[700px] lg:max-w-[900px] h-auto mx-auto object-contain"
           />
           <div>
             <h1 className="text-7xl font-bold">Grow Your <span className="text-red-400">Skill</span> <br /> <span className="text-pink-600">With Us</span></h1>

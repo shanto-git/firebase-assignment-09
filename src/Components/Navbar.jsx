@@ -5,26 +5,30 @@ import { Link, NavLink } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { SiGmail } from "react-icons/si";
 import { AuthContext } from "../Provider/AuthProvider";
-import { ToastContainer, toast } from 'react-toastify';
-
+import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
-  const handleLogOut=()=>{
+  const handleLogOut = () => {
     toast.success("Login successful!");
-    logOut().then(()=>{
-    }).catch((err)=>{
-      console.log(err);
-    })
-  }
+    logOut()
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div>
       <div className="navbar bg-base-100 shadow-sm">
         <div className="navbar-start">
           <Link to="/" className="flex items-center">
-            <img className="w-12 h-10" src={logoIcon} />
-            <h1 className="font-bold text-3xl text-green-500">
+            <img
+              src={logoIcon}
+              alt="Logo"
+              className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-10"
+            />
+            <h1 className="font-bold text-xl sm:text-2xl md:text-3xl text-green-500">
               Skill <span className="text-yellow-400">Swap</span>
             </h1>
           </Link>
@@ -44,25 +48,30 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/success" className={({isActive})=>
-              isActive
-              ? "bg-green-100 text-sm text-green-900 font-bold border-b-3 border-yellow-500"
-            : "text-sm font-semibold"
-            }>
+              <NavLink
+                to="/success"
+                className={({ isActive }) =>
+                  isActive
+                    ? "bg-green-100 text-sm text-green-900 font-bold border-b-3 border-yellow-500"
+                    : "text-sm font-semibold"
+                }
+              >
                 Success
-              </NavLink> 
+              </NavLink>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
           {user ? (
-            <div className="drawer-end">
+            <div className="drawer drawer-end">
               <input
                 id="my-drawer-5"
                 type="checkbox"
                 className="drawer-toggle"
               />
-              <div className="drawer-content">
+
+              {/* Drawer Button */}
+              <div className="drawer-content flex justify-end p-2">
                 <label
                   htmlFor="my-drawer-5"
                   className="drawer-button btn btn-success text-white font-bold"
@@ -70,19 +79,41 @@ const Navbar = () => {
                   My Profile
                 </label>
               </div>
-              <div className="drawer-side">
+
+              {/* Drawer Side */}
+              <div className="drawer-side z-50">
                 <label
                   htmlFor="my-drawer-5"
                   aria-label="close sidebar"
                   className="drawer-overlay"
                 ></label>
-                <div className="menu bg-base-200 min-h-full w-80 p-4 flex flex-col justify-between">
-                  <div className="flex flex-col items-center gap-1"><img src={user.photoURL} alt="photo" className="w-18 m-2 rounded-full border-1"/>
-                  <h1 className="text-xl font-bold">{user.displayName}</h1>
-                  <small>{user.email}</small>
-                  <button className="btn btn-secondary m-5">Update Profile</button>
+
+                <div className="menu bg-base-200 min-h-full w-80 sm:w-72 p-6 flex flex-col justify-between shadow-lg">
+                  {/* User Info */}
+                  <div className="flex flex-col items-center text-center gap-2">
+                    <img
+                      src={user?.photoURL || "https://via.placeholder.com/100"}
+                      alt="photo"
+                      className="w-24 h-24 object-cover rounded-full border border-gray-300"
+                    />
+                    <h1 className="text-xl font-bold mt-2 break-words">
+                      {user?.displayName || "Guest User"}
+                    </h1>
+                    <small className="text-gray-500 break-words text-sm">
+                      {user?.email || "No email available"}
+                    </small>
+                    <button className="btn btn-secondary w-full mt-4">
+                      Update Profile
+                    </button>
                   </div>
-                  <button onClick={handleLogOut} className="btn bg-gray-300 justify-center hover:underline">Sign out</button>
+
+                  {/* Sign Out */}
+                  <button
+                    onClick={handleLogOut}
+                    className="btn bg-[#2F2F2F] text-white border-black w-full mt-6 hover:underline"
+                  >
+                    Sign Out
+                  </button>
                 </div>
               </div>
             </div>

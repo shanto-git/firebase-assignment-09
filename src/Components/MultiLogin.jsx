@@ -12,38 +12,42 @@ const MultiLogin = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-base-300 bg-opacity-0 flex justify-center items-center z-50">
-      <div className="bg-white rounded-lg p-6 w-6/16 relative shadow-lg">
-        {/* Close button */}
-        <button
-          type="button"
-          onClick={handleClose}
-          className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-        >
-          ✕
-        </button>
+    <div className="fixed inset-0 bg-base-300 bg-opacity-50 flex justify-center items-center z-50 px-4">
+  <div className="bg-white rounded-xl p-6 w-full max-w-sm sm:max-w-md md:max-w-lg relative shadow-2xl">
+    {/* Close button */}
+    <button
+      type="button"
+      onClick={handleClose}
+      className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+    >
+      ✕
+    </button>
 
-        <h3 className="font-bold text-lg text-center mb-4">Please Login First</h3>
+    <h3 className="font-bold text-lg text-center mb-4">
+      Please Login First
+    </h3>
 
-        <div className="flex flex-col justify-center gap-3">
-          <NavLink
-            to="/auth/login"
-            onClick={onClose}
-            className="btn bg-white text-black border-[#e5e5e5]"
-          >
-            <SiGmail />
-            Login with Email
-          </NavLink>
-          <button
-            onClick={onClose}
-            className="btn bg-white text-black border-[#e5e5e5]"
-          >
-            <FcGoogle />
-            Login with Google
-          </button>
-        </div>
-      </div>
+    <div className="flex flex-col justify-center gap-3">
+      <NavLink
+        to="/auth/login"
+        onClick={onClose}
+        className="btn bg-white text-black border border-[#e5e5e5] hover:bg-gray-50 flex items-center justify-center gap-2"
+      >
+        <SiGmail />
+        Login with Email
+      </NavLink>
+
+      <button
+        onClick={onClose}
+        className="btn bg-white text-black border border-[#e5e5e5] hover:bg-gray-50 flex items-center justify-center gap-2"
+      >
+        <FcGoogle />
+        Login with Google
+      </button>
     </div>
+  </div>
+</div>
+
   );
 };
 
