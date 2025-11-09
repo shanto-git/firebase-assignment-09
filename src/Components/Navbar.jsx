@@ -1,18 +1,19 @@
 import React, { use, useContext } from "react";
 import logoIcon from "../assets/logo-removebg-preview.png";
 import { CgProfile } from "react-icons/cg";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { SiGmail } from "react-icons/si";
 import { AuthContext } from "../Provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const Navbar = () => {
-  const navigate = useNavigate();
-  const { user, logOut } = use(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut=()=>{
+    toast.success("Login successful!");
     logOut().then(()=>{
-      alert("SignOut successfully");
     }).catch((err)=>{
       console.log(err);
     })
@@ -76,10 +77,10 @@ const Navbar = () => {
                   className="drawer-overlay"
                 ></label>
                 <div className="menu bg-base-200 min-h-full w-80 p-4 flex flex-col justify-between">
-                  <div className="flex flex-col items-center gap-1"><img src={user.photo} alt="" className="w-18 rounded-full border-1"/>
-                  <h1>{user.name}</h1>
-                  <p>{user.email}</p>
-                  <button className="btn btn-secondary">Update Profile</button>
+                  <div className="flex flex-col items-center gap-1"><img src={user.photoURL} alt="photo" className="w-18 m-2 rounded-full border-1"/>
+                  <h1 className="text-xl font-bold">{user.displayName}</h1>
+                  <small>{user.email}</small>
+                  <button className="btn btn-secondary m-5">Update Profile</button>
                   </div>
                   <button onClick={handleLogOut} className="btn bg-gray-300 justify-center hover:underline">Sign out</button>
                 </div>
@@ -125,6 +126,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
+      <ToastContainer position="top-center" autoClose={2000} theme="green" />
     </div>
   );
 };

@@ -7,8 +7,8 @@ const MultiLogin = ({ onClose }) => {
   const navigate = useNavigate();
 
   const handleClose = () => {
-    if (onClose) onClose();        // update parent state
-    navigate("/");                 // redirect to homepage
+    if (onClose) onClose();    
+    navigate("/");                 
   };
 
   return (
