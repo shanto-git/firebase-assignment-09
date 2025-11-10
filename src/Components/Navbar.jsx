@@ -1,7 +1,7 @@
 import React, { use, useContext } from "react";
 import logoIcon from "../assets/logo-removebg-preview.png";
 import { CgProfile } from "react-icons/cg";
-import { Link, NavLink } from "react-router-dom";
+import { Link, Navigate, NavLink } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { SiGmail } from "react-icons/si";
 import { AuthContext } from "../Provider/AuthProvider";
@@ -9,36 +9,29 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const {signInWithGoogle}= useContext(AuthContext);
-  
-  const handleClose = () => {
-      if (onClose) onClose();    
-      navigate("/");                 
-    };
-  
-    const handleWithGoogle=()=>{
-      signInWithGoogle()
-      .then(result=>{
-        const user= result.user;
+  const { signInWithGoogle } = useContext(AuthContext);
+
+  const handleWithGoogle = () => {
+    signInWithGoogle()
+      .then((result) => {
+        const user = result.user;
         console.log(user);
-  
-        if (onClose) onClose();
-          navigate(location.state?.from?.pathname || "/");
       })
       .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-    })
-    };
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.customData.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
 
   const handleLogOut = () => {
-    toast.success("Login successful!");
+    toast.success("SugnOut Successfully", {
+      position: "top-center",
+      autoClose: 2000,
+      style: { color: "red", backgroundColor: "white", fontWeight: "bold" },
+    });
     logOut()
       .then(() => {})
       .catch((err) => {
@@ -116,7 +109,6 @@ const Navbar = () => {
                 ></label>
 
                 <div className="menu bg-base-200 min-h-full w-80 sm:w-72 p-6 flex flex-col justify-between shadow-lg">
-                  {/* User Info */}
                   <div className="flex flex-col items-center text-center gap-2">
                     <img
                       src={user?.photoURL || "https://via.placeholder.com/100"}
@@ -129,12 +121,14 @@ const Navbar = () => {
                     <small className="text-gray-500 break-words text-sm">
                       {user?.email || "No email available"}
                     </small>
-                    <Link to="/auth/myProfile" className="btn btn-secondary w-full mt-4">
+                    <Link
+                      to="/auth/myProfile"
+                      className="btn btn-secondary w-full mt-4"
+                    >
                       Update Profile
                     </Link>
                   </div>
 
-                  {/* Sign Out */}
                   <button
                     onClick={handleLogOut}
                     className="btn bg-[#2F2F2F] text-white border-black w-full mt-6 hover:underline"
@@ -157,7 +151,6 @@ const Navbar = () => {
               <dialog id="my_modal_3" className="modal">
                 <div className="modal-box">
                   <form method="dialog">
-                    {/* if there is a button in form, it will close the modal */}
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                       ✕
                     </button>
@@ -173,7 +166,10 @@ const Navbar = () => {
                       <SiGmail />
                       Login with Email
                     </NavLink>
-                    <button onClick={handleWithGoogle} className="btn bg-white text-black border-[#e5e5e5]">
+                    <button
+                      onClick={handleWithGoogle}
+                      className="btn bg-white text-black border-[#e5e5e5]"
+                    >
                       <FcGoogle />
                       Login with Google
                     </button>
@@ -184,7 +180,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      <ToastContainer position="top-center" autoClose={2000} theme="green" />
+      <ToastContainer position="top-center" autoClose={2000} theme="red" />
     </div>
   );
 };

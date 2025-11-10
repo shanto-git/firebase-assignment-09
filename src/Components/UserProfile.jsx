@@ -4,7 +4,6 @@ import { updateProfile } from "firebase/auth";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { FaBackspace } from "react-icons/fa";
-import { TbLogout } from "react-icons/tb";
 
 
 const UserProfile = () => {
@@ -25,7 +24,11 @@ const UserProfile = () => {
     })
       .then(() => {
         setUser({ ...user, displayName: name, photoURL: photo });
-        toast.success("Profile updated successfully!");
+        toast.success("Profile Updated", {
+          position: "top-center",
+          autoClose: 5000,
+          style: { color: "green", backgroundColor: "white", fontWeight: "bold" },
+        });;
         setEditing(false);
       })
       .catch((error) => {
@@ -39,21 +42,16 @@ const UserProfile = () => {
   return (
     <div className="max-w-lg mx-auto p-6 mt-20 bg-white shadow-lg rounded-2xl">
       <Toaster position="top-center" />
-      <div className="flex justify-between">
-        <button onClick={() => navigate(-1)} className="btn btn-dash btn-accent mb-4 hover:underline">
+      <button onClick={() => navigate(-1)} className="btn btn-dash btn-accent mb-4 hover:underline">
         <FaBackspace /> Back
       </button>
-        <button className="btn btn-soft btn-error mb-4 hover:underline">
-        SignOut <TbLogout />
-      </button>
-      </div>
 
       <h2 className="text-2xl font-bold text-center mb-6">My Profile</h2>
 
       {!editing ? (
         <div className="text-center space-y-4">
           <img
-            src={user?.photoURL || "https://i.ibb.co/2FsfXqM/default-user.png"}
+            src={user?.photoURL || "https://img.icons8.com/?size=100&id=gZmAnbNhG4iO&format=png&color=000000"}
             alt="Profile"
             className="w-24 h-24 rounded-full mx-auto shadow-lg border-2"
           />

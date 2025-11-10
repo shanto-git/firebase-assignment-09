@@ -13,6 +13,7 @@ import MultiLogin from "../Components/MultiLogin";
 import BookSession from "../Components/BoookSession";
 import { path } from "framer-motion/client";
 import UserProfile from "../Components/UserProfile";
+import ForgotPassword from "../Components/ForgotPassword ";
 
 
 const router = createBrowserRouter([
@@ -63,7 +64,8 @@ const router = createBrowserRouter([
         Component: Login,
       },
       {
-        
+        path:"login/forgotPass",
+        Component:ForgotPassword,
       },
       {
         path:"register",
