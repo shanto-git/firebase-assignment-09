@@ -10,6 +10,9 @@ import Register from "../Pages/Register";
 import Success from "../Pages/Success";
 import PrivateRoute from "../Provider/PrivateRoute";
 import MultiLogin from "../Components/MultiLogin";
+import BookSession from "../Components/BoookSession";
+import { path } from "framer-motion/client";
+import UserProfile from "../Components/UserProfile";
 
 
 const router = createBrowserRouter([
@@ -41,6 +44,10 @@ const router = createBrowserRouter([
         path:"/skillType/:id",
         Component: SkillDetails,
       },
+      {
+        path: "/booksession/:id",
+        Component:BookSession,
+      }
     ],
   },
   {
@@ -56,8 +63,15 @@ const router = createBrowserRouter([
         Component: Login,
       },
       {
+        
+      },
+      {
         path:"register",
         Component: Register,
+      },
+      {
+        path:"myProfile",
+        Component:UserProfile,
       }
     ]
   }

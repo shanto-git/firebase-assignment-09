@@ -59,7 +59,7 @@ const Login = () => {
                   to="/auth/register"
                   className="text-blue-500 hover:underline"
                 >
-                  Register
+                  SignUp
                 </Link>
               </p>
             </fieldset>

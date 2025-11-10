@@ -37,7 +37,7 @@ const Register = () => {
       <div className="hero-content">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <form onSubmit={handleRegister} className="card-body w-96">
-            <h1 className="text-2xl text-center font-bold">Register with Email</h1>
+            <h1 className="text-2xl text-center font-bold">SignUp with Email</h1>
             <fieldset className="fieldset">
               <label className="label">Name</label>
               <input

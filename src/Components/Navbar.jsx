@@ -9,6 +9,33 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const {signInWithGoogle}= useContext(AuthContext);
+  
+  const handleClose = () => {
+      if (onClose) onClose();    
+      navigate("/");                 
+    };
+  
+    const handleWithGoogle=()=>{
+      signInWithGoogle()
+      .then(result=>{
+        const user= result.user;
+        console.log(user);
+  
+        if (onClose) onClose();
+          navigate(location.state?.from?.pathname || "/");
+      })
+      .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    })
+    };
 
   const handleLogOut = () => {
     toast.success("Login successful!");
@@ -102,9 +129,9 @@ const Navbar = () => {
                     <small className="text-gray-500 break-words text-sm">
                       {user?.email || "No email available"}
                     </small>
-                    <button className="btn btn-secondary w-full mt-4">
+                    <Link to="/auth/myProfile" className="btn btn-secondary w-full mt-4">
                       Update Profile
-                    </button>
+                    </Link>
                   </div>
 
                   {/* Sign Out */}
@@ -146,7 +173,7 @@ const Navbar = () => {
                       <SiGmail />
                       Login with Email
                     </NavLink>
-                    <button className="btn bg-white text-black border-[#e5e5e5]">
+                    <button onClick={handleWithGoogle} className="btn bg-white text-black border-[#e5e5e5]">
                       <FcGoogle />
                       Login with Google
                     </button>
