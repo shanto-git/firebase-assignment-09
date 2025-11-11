@@ -48,7 +48,7 @@ const Register = () => {
             navigate(location.state?.from?.pathname || "/");
           })
           .catch((error) => {
-            console.log(error);
+            // console.log(error);
             setUser(user);
           });
       })

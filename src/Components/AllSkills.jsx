@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const AllSkills = () => {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const controls = useAnimation();
 
   useEffect(() => {
     setError(null);
@@ -21,10 +20,8 @@ const AllSkills = () => {
       .then((data) => {
         setSkills(Array.isArray(data) ? data : []);
         setLoading(false);
-        controls.start("show");
       })
       .catch((err) => {
-        console.error("fetch error:", err);
         setError(err.message || "Failed to load data");
         setLoading(false);
       });
@@ -34,13 +31,13 @@ const AllSkills = () => {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.2 },
+      transition: { staggerChildren: 0.3 },
     },
   };
 
   const card = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+    hidden: { opacity: 0, y: 50 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   return (
@@ -60,15 +57,15 @@ const AllSkills = () => {
         <motion.div
           variants={container}
           initial="hidden"
-          animate={controls}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto"
         >
           {skills.map(({ skillId, skillName, rating, price, image }) => (
             <motion.div
               key={skillId}
               variants={card}
-              whileHover={{ scale: 1.03 }}
-              className="bg-white shadow-md rounded-2xl transition-transform hover:shadow-lg overflow-hidden flex flex-col"
+              className="bg-white shadow-md rounded-2xl transition-transform hover:shadow-xl hover:-translate-y-2 overflow-hidden flex flex-col"
             >
               <img
                 src={image}

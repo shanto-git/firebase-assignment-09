@@ -15,7 +15,7 @@ const Navbar = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -35,7 +35,7 @@ const Navbar = () => {
     logOut()
       .then(() => {})
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
   return (

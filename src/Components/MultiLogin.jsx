@@ -18,7 +18,7 @@ const MultiLogin = ({ onClose }) => {
     signInWithGoogle()
     .then(result=>{
       const user= result.user;
-      console.log(user);
+      // console.log(user);
 
       if (onClose) onClose();
         navigate(location.state?.from?.pathname || "/");
