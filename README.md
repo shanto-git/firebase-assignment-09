@@ -1,16 +1,24 @@
-# React + Vite
+Project Name : SkillSwap– A Local Skill Exchange Platform
+Project Requirement: https://docs.google.com/document/d/1jHK5MW51UHPB6sXvZeeTwBmAbkbsptwTJzmAxhWjSlU/edit?tab=t.0
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live URL :https://your-skill-swap-app.web.app/
 
-Currently, two official plugins are available:
+Purpose:
+SkillSwap is an interactive web platform that connects people who want to share, learn, or exchange skills locally. Users can create profiles, explore others’ skills, and connect to collaborate or teach each other.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Key Features:
+1.Firebase Authentication (Email/Password & Google Login)
+2.Dynamic Skill Cards loaded from JSON data
+3.Smooth Animations using Framer Motion
+4.Fully Responsive UI built with Tailwind CSS & DaisyUI
+5.Skill Details Page with Ratings and Pricing
+6.How It Works Section with animated steps
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+NPM Packages Used:
+=>tailwindcss → for styling
+=>daisyui → for pre-styled UI components
+=>react-router-dom → for routing
+=>react-icons → for icon support
+=>react-hot-toast → for toast styling
+=>animate.css → for page and element animations
+=>firebase → for authentication & hosting
